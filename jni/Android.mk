@@ -12,7 +12,7 @@ CORE_DIR := $(LOCAL_PATH)/..
 
 include $(CORE_DIR)/sdl/Makefile.common
 
-INCFLAGS += (NP21_INCFLAGS) \
+INCFLAGS += $(NP21_INCFLAGS) \
 	-I$(NP2_PATH)/sdl/libretro \
 	-I$(NP2_PATH)/sdl/libretro/libretro-common/include \
 	-I$(NP2_PATH)/sdl/libretro/libretro-common/include/array \
