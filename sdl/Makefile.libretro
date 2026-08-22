@@ -137,7 +137,7 @@ else ifeq ($(platform), osx)
 		ENDIANNESS_DEFINES += -DMSB_FIRST
 	endif
 	OSX_LT_MAVERICKS = `(( $(OSXVER) <= 9)) && echo "YES"`
-	CXX_VER = -std=c++11
+	CXX_VER = -std=c++14
 	CFLAGS += -mmacosx-version-min=10.7
 	CXXFLAGS += -mmacosx-version-min=10.7 -stdlib=libc++
 	LDFLAGS += -mmacosx-version-min=10.7 -stdlib=libc++
@@ -169,7 +169,7 @@ else ifneq (,$(findstring ios,$(platform)))
 		ifeq ($(IOSSDK),)
 			IOSSDK := $(shell xcodebuild -version -sdk iphoneos Path)
 		endif
-		CXX_VER = -std=c++11
+		CXX_VER = -std=c++14
 		ifeq ($(platform), ios-arm64)
 			CC = cc -arch arm64 -isysroot $(IOSSDK)
 			CXX = c++ -arch arm64 -isysroot $(IOSSDK)
@@ -199,7 +199,7 @@ else ifeq ($(platform), tvos-arm64)
 	endif
 	CC = cc -arch arm64 -isysroot $(IOSSDK)
 	CXX = c++ -arch arm64 -isysroot $(IOSSDK)
-	CXX_VER = -std=c++11
+	CXX_VER = -std=c++14
 	LDFLAGS += -stdlib=libc++
 	CFLAGS += -Wno-incompatible-function-pointer-types
 	CFLAGS += -mappletvos-version-min=11.0
