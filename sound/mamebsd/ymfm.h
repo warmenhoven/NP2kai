@@ -53,6 +53,16 @@
 #include <stdint.h>
 #undef max
 
+// GCC before 5 implements only the C++11 constexpr rules: a single return
+// statement, and a literal enclosing class.  A few of the functions below do
+// not satisfy those, and devkitPPC (Wii U) still ships such a compiler, so
+// drop constexpr there.  None of them is used in a constant expression.
+#if defined(__GNUC__) && !defined(__clang__) && !defined(__INTEL_COMPILER) && __GNUC__ < 5
+ #define YMFM_CONSTEXPR inline
+#else
+ #define YMFM_CONSTEXPR constexpr
+#endif
+
 namespace ymfm
 {
 
