@@ -26,7 +26,7 @@ LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 // Dialog
 //
 
-IDD_CONFIG DIALOG  0, 0, 182, 238
+IDD_CONFIG DIALOG DISCARDABLE  0, 0, 182, 238
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ô@òé"
 CLASS "np2dialog"
@@ -73,7 +73,7 @@ BEGIN
     PUSHBUTTON      "îüòõ",IDCANCEL,130,26,44,14
 END
 
-IDD_NEWDISK DIALOG  0, 0, 180, 48
+IDD_NEWDISK DIALOG DISCARDABLE  0, 0, 180, 48
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ò¿èGîÎìkó¬ãT"
 CLASS "np2dialog"
@@ -90,7 +90,7 @@ BEGIN
     PUSHBUTTON      "îüòõ",IDCANCEL,128,26,44,14
 END
 
-IDD_NEWDISK2 DIALOG  0, 0, 196, 48
+IDD_NEWDISK2 DIALOG DISCARDABLE  0, 0, 196, 48
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ò¿èGîÎìkó¬ãT"
 CLASS "np2dialog"
@@ -109,7 +109,7 @@ BEGIN
     PUSHBUTTON      "îüòõ",IDCANCEL,144,26,44,14
 END
 
-IDD_NEWHDDDISK DIALOG  0, 0, 160, 48
+IDD_NEWHDDDISK DIALOG DISCARDABLE  0, 0, 160, 48
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ò¿èGöQìkó¬ãT"
 CLASS "np2dialog"
@@ -124,7 +124,7 @@ BEGIN
     PUSHBUTTON      "îüòõ",IDCANCEL,108,26,44,14
 END
 
-IDD_NEWSASI DIALOG  0, 0, 144, 54
+IDD_NEWSASI DIALOG DISCARDABLE  0, 0, 144, 54
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ò¿èGSASIöQìkó¬ãT"
 CLASS "np2dialog"
@@ -146,7 +146,7 @@ BEGIN
     PUSHBUTTON      "îüòõ",IDCANCEL,92,26,44,14
 END
 
-IDD_SCROPT1 DIALOG  0, 0, 172, 96
+IDD_SCROPT1 DIALOG DISCARDABLE  0, 0, 172, 96
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ï—ì≥"
 FONT 9, "ñmñ„"
@@ -163,7 +163,7 @@ BEGIN
     RTEXT           "",IDC_LIGHTSTR,144,54,20,10,SS_SUNKEN
 END
 
-IDD_SCROPT_FULLSCREEN DIALOG  0, 0, 172, 96
+IDD_SCROPT_FULLSCREEN DIALOG DISCARDABLE  0, 0, 172, 96
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "î©ìøíπ"
 FONT 9, "ñmñ„"
@@ -178,7 +178,7 @@ BEGIN
                     WS_VSCROLL | WS_GROUP | WS_TABSTOP
 END
 
-IDD_SCROPT2 DIALOG  0, 0, 172, 96
+IDD_SCROPT2 DIALOG DISCARDABLE  0, 0, 172, 96
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "òºì™"
 FONT 9, "ñmñ„"
@@ -199,7 +199,7 @@ BEGIN
                     BS_AUTOCHECKBOX | WS_TABSTOP,16,80,148,10
 END
 
-IDD_SCROPT3 DIALOG  0, 0, 172, 96
+IDD_SCROPT3 DIALOG DISCARDABLE  0, 0, 172, 96
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ïØò"
 FONT 9, "ñmñ„"
@@ -225,7 +225,7 @@ BEGIN
     RTEXT           "",IDC_REALPALSTR,134,72,24,10,SS_SUNKEN
 END
 
-IDD_SERIAL1 DIALOG  0, 0, 202, 160
+IDD_SERIAL1 DIALOG DISCARDABLE  0, 0, 202, 160
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ä¨òŒã…êy"
 FONT 9, "ñmñ„"
@@ -262,7 +262,7 @@ BEGIN
     PUSHBUTTON      "...",IDC_COM1DEFB,166,94,20,10
 END
 
-IDD_PC9861A DIALOG  0, 0, 202, 160
+IDD_PC9861A DIALOG DISCARDABLE  0, 0, 202, 160
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "PC-9861K"
 FONT 9, "ñmñ„"
@@ -291,7 +291,7 @@ BEGIN
                     84,156,68
 END
 
-IDD_MPUPC98 DIALOG  0, 0, 202, 178
+IDD_MPUPC98 DIALOG DISCARDABLE  0, 0, 202, 178
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "MPU-PC98II"
 CLASS "np2dialog"
@@ -384,7 +384,7 @@ BEGIN
     LTEXT           "",IDC_VOLF16STR,144,78,26,10,SS_SUNKEN,WS_EX_RIGHT
 END
 
-IDD_SND26 DIALOG  0, 0, 224, 124
+IDD_SND26 DIALOG DISCARDABLE  0, 0, 224, 124
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "26"
 FONT 9, "ñmñ„"
@@ -404,7 +404,7 @@ BEGIN
     PUSHBUTTON      "í™îÕïàõ¡",IDC_SND26DEF,176,102,40,14
 END
 
-IDD_SND86 DIALOG  0, 0, 224, 124
+IDD_SND86 DIALOG DISCARDABLE  0, 0, 224, 124
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "86"
 FONT 9, "ñmñ„"
@@ -427,7 +427,7 @@ BEGIN
     PUSHBUTTON      "í™îÕïàõ¡",IDC_SND86DEF,176,102,40,14
 END
 
-IDD_SNDSPB DIALOG  0, 0, 224, 124
+IDD_SNDSPB DIALOG DISCARDABLE  0, 0, 224, 124
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "SPB"
 FONT 9, "ñmñ„"
@@ -457,7 +457,7 @@ BEGIN
     PUSHBUTTON      "í™îÕïàõ¡",IDC_SPBDEF,176,102,40,14
 END
 
-IDD_SNDPAD1 DIALOG  0, 0, 224, 124
+IDD_SNDPAD1 DIALOG DISCARDABLE  0, 0, 224, 124
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ömòVêwõƒìı"
 FONT 9, "ñmñ„"
@@ -484,7 +484,7 @@ BEGIN
     CONTROL         "D",IDC_PAD1_RD,"Button",BS_AUTOCHECKBOX,160,60,30,10
 END
 
-IDD_CALENDAR DIALOG  0, 0, 164, 80
+IDD_CALENDAR DIALOG DISCARDABLE  0, 0, 164, 80
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "òTóRïØé‚"
 CLASS "np2dialog"
@@ -509,7 +509,7 @@ BEGIN
     PUSHBUTTON      "îüòõ",IDCANCEL,112,26,44,14
 END
 
-IDD_ABOUT DIALOG  0, 0, 196, 108
+IDD_ABOUT DIALOG DISCARDABLE  0, 0, 196, 108
 STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "çwöy"
 CLASS "np2dialog"
@@ -534,6 +534,8 @@ BEGIN
     LTEXT           "Interrupt",IDC_STATIC,104,26,30,8
     COMBOBOX        IDC_LGY98INT,136,24,40,52,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     LTEXT           "TAP device name",IDC_STATIC,8,43,76,8
+    COMBOBOX        IDC_LGY98TAP,8,52,168,12,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Defaults",IDC_LGY98DEF,136,102,40,14
 END
 
 IDD_GD5430 DIALOGEX 0, 0, 184, 124
@@ -554,7 +556,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO DISCARDABLE 
 BEGIN
     IDD_CONFIG, DIALOG
     BEGIN
@@ -741,18 +743,18 @@ END
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE 
+1 TEXTINCLUDE DISCARDABLE 
 BEGIN
     "..\\..\\resource.h\0"
 END
 
-2 TEXTINCLUDE 
+2 TEXTINCLUDE DISCARDABLE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE 
+3 TEXTINCLUDE DISCARDABLE 
 BEGIN
     "#include ""np2.rc2""\r\n"
     "\0"
@@ -766,7 +768,7 @@ END
 // Menu
 //
 
-IDR_SYS MENU 
+IDR_SYS MENU DISCARDABLE 
 BEGIN
     MENUITEM "çCè›äÆêy(&T)",                IDM_TOOLWIN
     MENUITEM SEPARATOR
@@ -784,29 +786,29 @@ BEGIN
     MENUITEM SEPARATOR
 END
 
-IDR_SYSKEYDISP MENU 
+IDR_SYSKEYDISP MENU DISCARDABLE 
 BEGIN
     MENUITEM "ïôôÚé˙ìkäÆêy(&K)",             IDM_KEYDISP
 END
 
-IDR_SYSSOFTKBD MENU 
+IDR_SYSSOFTKBD MENU DISCARDABLE 
 BEGIN
     MENUITEM "îÎé¸é˙ìkäÆêy(&S)",             IDM_SOFTKBD
 END
 
-IDR_SYSDEBUG32 MENU 
+IDR_SYSDEBUG32 MENU DISCARDABLE 
 BEGIN
     MENUITEM "Memory debug",                IDM_MEMDBG32
 END
 
-IDR_SYSDEBUG MENU 
+IDR_SYSDEBUG MENU DISCARDABLE 
 BEGIN
     MENUITEM "Memory dump",                 IDM_MEMORYDUMP
     MENUITEM "Debug utility",               IDM_DEBUGUTY
     MENUITEM SEPARATOR
 END
 
-IDR_MAIN MENU 
+IDR_MAIN MENU DISCARDABLE 
 BEGIN
     POPUP "í°í‡(&E)"
     BEGIN
@@ -835,17 +837,6 @@ BEGIN
         MENUITEM "&1ñˆõü",                      IDM_30FPS
         MENUITEM "&2ñˆõü",                      IDM_20FPS
         MENUITEM "&3ñˆõü",                      IDM_15FPS
-        MENUITEM SEPARATOR
-        POPUP "Video filter"
-        BEGIN
-            MENUITEM "Enable",                   IDM_VF1EN
-            MENUITEM SEPARATOR
-            MENUITEM "Profile 0",                   IDM_VF1P0
-            MENUITEM "Profile 1",                   IDM_VF1P1
-            MENUITEM "Profile 2",                   IDM_VF1P2
-            MENUITEM SEPARATOR
-            MENUITEM "Use BMP only",                IDM_VF1BO
-        END
         MENUITEM SEPARATOR
         MENUITEM "ìøíπô@òé(&S)...",             IDM_SCREENOPT
     END
@@ -934,16 +925,13 @@ BEGIN
         MENUITEM "êåñxömòVà≤ìD(&R)",            IDM_RAPID
         MENUITEM "êåñxãÉéó(&M)",                IDM_MSRAPID
         MENUITEM "&ITF work",                   IDM_ITFWORK
-        MENUITEM "égóp SSTP(&U)",               IDM_SSTP
-        MENUITEM "&ITF work",                   IDM_ITFWORK
-        MENUITEM "Enable DebugSS",              IDM_EN_DBSS
         MENUITEM SEPARATOR
         MENUITEM "àÌõ¯õıñ‡(&H)...",             IDM_HELP
         MENUITEM "çwöy(&A)...",                 IDM_ABOUT
     END
 END
 
-IDR_STAT MENU 
+IDR_STAT MENU DISCARDABLE 
 BEGIN
     POPUP "úSñ™(&S)"
     BEGIN
@@ -971,38 +959,6 @@ BEGIN
     END
 END
 
-IDR_DEBUGSS MENU
-BEGIN
-    POPUP "DebugSS"
-    BEGIN
-        MENUITEM "Save debugss 0",                      IDM_DBSSSAVE0
-        MENUITEM "Save debugss 1",                      IDM_DBSSSAVE1
-        MENUITEM "Save debugss 2",                      IDM_DBSSSAVE2
-        MENUITEM "Save debugss 3",                      IDM_DBSSSAVE3
-        MENUITEM SEPARATOR
-        MENUITEM "Load debugss 0",                      IDM_DBSSLOAD0
-        MENUITEM "Load debugss 1",                      IDM_DBSSLOAD1
-        MENUITEM "Load debugss 2",                      IDM_DBSSLOAD2
-        MENUITEM "Load debugss 3",                      IDM_DBSSLOAD3
-    END
-END
-
-IDR_DEBUGSS MENU
-BEGIN
-    POPUP "DebugSS"
-    BEGIN
-        MENUITEM "Save debugss 0",                      IDM_DBSSSAVE0
-        MENUITEM "Save debugss 1",                      IDM_DBSSSAVE1
-        MENUITEM "Save debugss 2",                      IDM_DBSSSAVE2
-        MENUITEM "Save debugss 3",                      IDM_DBSSSAVE3
-        MENUITEM SEPARATOR
-        MENUITEM "Load debugss 0",                      IDM_DBSSLOAD0
-        MENUITEM "Load debugss 1",                      IDM_DBSSLOAD1
-        MENUITEM "Load debugss 2",                      IDM_DBSSLOAD2
-        MENUITEM "Load debugss 3",                      IDM_DBSSLOAD3
-    END
-END
-
 IDR_FDD1MENU MENU DISCARDABLE 
 BEGIN
     POPUP "îÎìkîùã≠ìı-&1"
@@ -1013,7 +969,7 @@ BEGIN
     END
 END
 
-IDR_FDD2MENU MENU 
+IDR_FDD2MENU MENU DISCARDABLE 
 BEGIN
     POPUP "îÎìkîùã≠ìı-&2"
     BEGIN
@@ -1023,7 +979,7 @@ BEGIN
     END
 END
 
-IDR_FDD3MENU MENU 
+IDR_FDD3MENU MENU DISCARDABLE 
 BEGIN
     POPUP "îÎìkîùã≠ìı-&3"
     BEGIN
@@ -1033,7 +989,7 @@ BEGIN
     END
 END
 
-IDR_FDD4MENU MENU 
+IDR_FDD4MENU MENU DISCARDABLE 
 BEGIN
     POPUP "îÎìkîùã≠ìı-&4"
     BEGIN
@@ -1043,7 +999,7 @@ BEGIN
     END
 END
 
-IDR_IDEMENU MENU 
+IDR_IDEMENU MENU DISCARDABLE 
 BEGIN
     POPUP "IDE #0"
     BEGIN
@@ -1071,7 +1027,7 @@ BEGIN
     END
 END
 
-IDR_SASIMENU MENU 
+IDR_SASIMENU MENU DISCARDABLE 
 BEGIN
     POPUP "SASI #0"
     BEGIN
@@ -1087,7 +1043,7 @@ BEGIN
     END
 END
 
-IDR_SCSIMENU MENU 
+IDR_SCSIMENU MENU DISCARDABLE 
 BEGIN
     POPUP "SCSI #0"
     BEGIN
@@ -1115,33 +1071,33 @@ BEGIN
     END
 END
 
-IDR_PXMENU MENU 
+IDR_PXMENU MENU DISCARDABLE 
 BEGIN
     MENUITEM "Otomi x2",                    IDM_PX1
     MENUITEM "Otomi x2 + 86",               IDM_PX2
 END
 
-IDR_WAVEREC MENU 
+IDR_WAVEREC MENU DISCARDABLE 
 BEGIN
     MENUITEM "ïôôÚé≈ë∫(&W)",                IDM_WAVEREC
 END
 
-IDR_CPUSAVE16 MENU 
+IDR_CPUSAVE16 MENU DISCARDABLE 
 BEGIN
     MENUITEM "&i286 ëçä‰",                  IDM_CPUSAVE
 END
 
-IDR_CPUSAVE32 MENU 
+IDR_CPUSAVE32 MENU DISCARDABLE 
 BEGIN
     MENUITEM "&i386 ëçä‰",                  IDM_CPUSAVE
 END
 
-IDR_CLOSE MENU 
+IDR_CLOSE MENU DISCARDABLE 
 BEGIN
     MENUITEM "çwât(&C)",                      IDM_CLOSE
 END
 
-IDR_TOOLWIN MENU 
+IDR_TOOLWIN MENU DISCARDABLE 
 BEGIN
     POPUP "õıñ‡(&S)"
     BEGIN
@@ -1151,7 +1107,7 @@ BEGIN
     END
 END
 
-IDR_KEYDISP MENU 
+IDR_KEYDISP MENU DISCARDABLE 
 BEGIN
     POPUP "í°êâ(&M)"
     BEGIN
@@ -1160,7 +1116,7 @@ BEGIN
     END
 END
 
-IDR_VIEW MENU 
+IDR_VIEW MENU DISCARDABLE 
 BEGIN
     POPUP "&System"
     BEGIN
@@ -1205,40 +1161,40 @@ END
 // Bitmap
 //
 
-NP2BMP                  BITMAP      "..\\nekop2.bmp"
-NP2TOOL                 BITMAP      "..\\np2tool.bmp"
-NP21TOOL                BITMAP      "..\\np21tool.bmp"
+NP2BMP                  BITMAP  DISCARDABLE     "..\\nekop2.bmp"
+NP2TOOL                 BITMAP  DISCARDABLE     "..\\np2tool.bmp"
+NP21TOOL                BITMAP  DISCARDABLE     "..\\np21tool.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Icon
 //
 
-IDI_ICON1               ICON        "..\\np2.ico"
-IDI_ICON2               ICON        "..\\np2debug.ico"
+IDI_ICON1               ICON    DISCARDABLE     "..\\np2.ico"
+IDI_ICON2               ICON    DISCARDABLE     "..\\np2debug.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // EXTROM
 //
 
-SEEKWAV                 EXTROM      "..\\fddseek.wav"
-SEEK1WAV                EXTROM      "..\\fddseek1.wav"
-RELAY1WAV               EXTROM      "..\\relay1.wav"
+SEEKWAV                 EXTROM  DISCARDABLE     "..\\fddseek.wav"
+SEEK1WAV                EXTROM  DISCARDABLE     "..\\fddseek1.wav"
+RELAY1WAV               EXTROM  DISCARDABLE     "..\\relay1.wav"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_APP_NAME2           "Neko Project II"
     IDS_APP_NAME21          "Neko Project 21"
     IDS_FILENAME_HELP       "np2.chm"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_FONTFACE            "ñmñ„"
     IDS_PFONTFACE           "ñmñ„"
@@ -1248,14 +1204,14 @@ BEGIN
     IDS_PFONTFACE_SECONDARY "MS PGothic"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_CAPTION_TOOL        "çCè›äÆêy"
     IDS_CAPTION_KEYDISP     "ïôôÚé˙ìk"
     IDS_CAPTION_SOFTKEY     "îÎé¸é˙ìk"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_HDD                 "öQìkîùã≠ìı(&H)"
     IDS_SCREENOPTION        "ìøíπô@òé"
@@ -1265,7 +1221,7 @@ BEGIN
     IDS_WABOPTION           "Window Accelerator board option"
 END
 	
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_CAPTION_FDD1        " FDD1:%s"
     IDS_CAPTION_FDD2        " FDD2:%s"
@@ -1276,7 +1232,7 @@ BEGIN
     IDS_CAPTION_CLOCK       "%sMHz"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_ERROR_DIRECTDRAW    "âπí⁄ä≤èG DirectDraw ã“òì"
     IDS_CONFIRM_RESET       "å≤óπëÓ?"
@@ -1285,26 +1241,26 @@ BEGIN
     IDS_ERROR_RESUME        "âπí⁄ö◊êIï∫"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_NONCONNECT          "ó‹ëKèr"
     IDS_1                   "1"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_1HALF               "1.5"
     IDS_2                   "2"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_INT0                "INT0"
     IDS_INT1                "INT1"
     IDS_INT2                "INT2"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_INT41               "INT41"
     IDS_INT42               "INT42"
@@ -1313,26 +1269,26 @@ BEGIN
     IDS_C8000               "C8000"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_CC000               "CC000"
     IDS_D0000               "D0000"
     IDS_D4000               "D4000"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_SERIAL1             "ä¨òŒã…êy"
     IDS_PC9861B             "ò√ã_.1"
     IDS_PC9861C             "ò√ã_.2"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_COM1                "COM1"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_COM2                "COM2"
     IDS_COM3                "COM3"
@@ -1342,7 +1298,7 @@ BEGIN
     IDS_2_5MHZ              "2.4576MHz"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_ZOOM_NONE           "ï≥é»äÒòü"
     IDS_ZOOM_FIXEDASPECT    "çkã¶ú|çﬂâg"
@@ -1350,7 +1306,7 @@ BEGIN
     IDS_ZOOM_FULL           "úéäÒéN"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_0088                "0088"
     IDS_0188                "0188"
@@ -1363,7 +1319,7 @@ BEGIN
     IDS_4X                  "4x"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_5X                  "5x"
     IDS_6X                  "6x"
@@ -1378,7 +1334,7 @@ BEGIN
     IDS_70D0                "70D0"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_PARITY_NONE         "ó‹"
     IDS_PARITY_ODD          "ì‰ò°ôâ"
@@ -1386,7 +1342,7 @@ BEGIN
     IDS_SYNC                "óKâªãc"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_ASYNC               "ôÍâªãc"
     IDS_ASYNC16X            "ôÍâªãc 16x"
@@ -1395,117 +1351,22 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_GD5430_BE           "PC-9821Bp,Bs,Be,Bf built-in"
     IDS_GD5430_XE           "PC-9821Xe built-in"
     IDS_GD5430_CB           "PC-9821Cb built-in"
     IDS_GD5430_CF           "PC-9821Cf built-in"
     IDS_GD5430_XE10         "PC-9821Xe10,Xa7e,Xb10 built-in"
     IDS_GD5430_CB2          "PC-9821Cb2 built-in"
     IDS_GD5430_CX2          "PC-9821Cx2 built-in"
-    IDS_GD5430_PCI          "PC-9821 PCI CL-GD5446 built-in"
-    IDS_GD5430_WAB          "MELCO WAB-S"
-    IDS_GD5430_WSN_A2F      "MELCO WSN-A2F"
-    IDS_GD5430_WSN          "MELCO WSN-A2F,A4F"
-    IDS_GD5430_GA98NBIC     "I-O DATA GA-98NBI/C"
-    IDS_GD5430_GA98NBII     "I-O DATA GA-98NBII"
-    IDS_GD5430_GA98NBIV     "I-O DATA GA-98NBIV"
-    IDS_GD5430_96           "PC-9801-96(PC-9801B3-E02)"
-    IDS_GD5430_AUTO_XE_G1_PCI    "Auto Select(Xe10, GA-98NBI/C, PCI)"
-    IDS_GD5430_AUTO_XE_G2_PCI    "Auto Select(Xe10, GA-98NBII, PCI)"
-    IDS_GD5430_AUTO_XE_G4_PCI    "Auto Select(Xe10, GA-98NBIV, PCI)"
-    IDS_GD5430_AUTO_XE_WA_PCI    "Auto Select(Xe10, WAB-S, PCI)"
-    IDS_GD5430_AUTO_XE_WS_PCI    "Auto Select(Xe10, WSN-A2F, PCI)"
-    IDS_GD5430_AUTO_XE_W4_PCI    "Auto Select(Xe10, WSN-A4F, PCI)"
-    IDS_GD5430_AUTO_XE10_WABS    "Auto Select(Xe10, WAB-S)"
-    IDS_GD5430_AUTO_XE10_WSN2    "Auto Select(Xe10, WSN-A2F)"
-    IDS_GD5430_AUTO_XE10_WSN4    "Auto Select(Xe10, WSN-A4F)"
 END
 
-STRINGTABLE
-BEGIN
-    IDS_PCI_PCMC_82434LX    "Intel 82434LX"
-    IDS_PCI_PCMC_82441FX    "Intel 82441FX"
-    IDS_PCI_PCMC_WILDCAT    "VLSI Wildcat"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_IDETYPE_NONE        "None"
-    IDS_IDETYPE_HDD         "HDD"
-    IDS_IDETYPE_CDROM       "CD-ROM"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_PHYSICALDRIVE       "&Host Drive "
-END
-
-STRINGTABLE
-BEGIN
-    IDS_DISABLE             "Disable"
-    IDS_INT0IRQ3            "INT0 (IRQ3)"
-    IDS_INT1IRQ5            "INT1 (IRQ5)"
-    IDS_INT2IRQ6            "INT2 (IRQ6)"
-    IDS_INT3IRQ9            "INT3 (IRQ9)"
-    IDS_INT41IRQ10          "INT41 (IRQ10)"
-    IDS_INT42IRQ11          "INT42 (IRQ11)"
-    IDS_INT5IRQ12           "INT5 (IRQ12)"
-    IDS_INT6IRQ13           "INT6 (IRQ13)"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_DMA0                "DMA #0"
-    IDS_DMA1                "DMA #1"
-    IDS_DMA2                "DMA #2"
-    IDS_DMA3                "DMA #3"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_CPU_CUSTOM          "(custom)"
-    IDS_CPU_80286           "Intel 80286"
-    IDS_CPU_80386           "Intel 80386"
-    IDS_CPU_I486SX          "Intel i486SX"
-    IDS_CPU_I486DX          "Intel i486DX"
-    IDS_CPU_PENTIUM         "Intel Pentium"
-    IDS_CPU_MMXPENTIUM      "Intel MMX Pentium"
-    IDS_CPU_PENTIUMPRO      "Intel Pentium Pro"
-    IDS_CPU_PENTIUMII       "Intel Pentium II"
-    IDS_CPU_PENTIUMIII      "Intel Pentium III"
-    IDS_CPU_PENTIUMM        "Intel Pentium M"
-    IDS_CPU_PENTIUM4        "Intel Pentium 4"
-    IDS_CPU_AMD_K6_2        "AMD K6-2"
-    IDS_CPU_AMD_K6_III      "AMD K6-III"
-    IDS_CPU_AMD_K7_ATHLON   "AMD K7 Athlon"
-    IDS_CPU_AMD_K7_ATHLONXP "AMD K7 Athlon XP"
-    IDS_CPU_NEKOPRO         "Neko Processor II"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_RENDERER_DIRECTDRAW "DirectDraw"
-    IDS_RENDERER_DIRECT3D   "Direct3D"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_RENDERER_IMODE_NN       "Nearest Neighbor"
-    IDS_RENDERER_IMODE_LINEAR   "Bilinear"
-    IDS_RENDERER_IMODE_PIXEL    "Pixel-retained (Light)"
-    IDS_RENDERER_IMODE_PIXEL2   "Pixel-retained (Soft)"
-    IDS_RENDERER_IMODE_PIXEL3   "Pixel-retained (Hard)"
-END
-
-
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_FONTTITLE           "úuñ„ô@ã¶"
     IDS_FONTEXT             "bmp"
     IDS_FONTFILTER          "PC-98 óπó[úuñ„ (*.bmp)|*.bmp|Virtual98 úuñ„|font.rom|ñôöoõ•äuó¬é¸|*.bmp;pc88.fnt;kanji1.rom;kanji2.rom;font.rom;subsys_c.rom;kanji.rom;fnt0808.x1;fnt0816.x1;fnt1616.x1;cgrom.dat|"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_BMPTITLE            "ëçä‰ó®óπó[ó[òë"
     IDS_BMPEXT              "bmp"
@@ -1518,14 +1379,14 @@ BEGIN
     IDS_MIMPIFILTER         "MIMPIã¶ô„ãcó¬ãT (*.def)|*.def|"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_FDDTITLE            "îÎìkó¬ãTô@ã¶"
     IDS_FDDEXT              "d88"
     IDS_FDDFILTER           "D88 îÎìkó¬ãT (*.d88;*.d98)|*.d88;*.88d;*.d98;*.98d|îÎìkó¬ãT (*.xdf;*.hdm;*.dup;*.2hd)|*.xdf;*.hdm;*.dup;*.2hd;*.tfd|ñôöoõ•äuó¬é¸|*.d88;*.88d;*.d98;*.98d;*.fdi;*.xdf;*.hdm;*.dup;*.2hd;*.tfd|ñôöoó¬é¸ (*.*)|*.*|"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_HDDTITLE            "öQìkó¬ãTô@ã¶"
     IDS_HDDEXT              "thd"
@@ -1537,7 +1398,7 @@ BEGIN
     IDS_ISOFILTER           "Cue sheets (*.cue)|*.cue|ISO-9660 image files (*.iso)|*.iso;*.img|ñôöoõ•äuó¬é¸|*.cue;*.iso;*.img|ñôöoó¬é¸ (*.*)|*.*|"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_SCSITITLE           "SCSIöQìkó¬ãTô@ã¶"
     IDS_SCSIEXT             "hdd"
@@ -1545,27 +1406,24 @@ BEGIN
     IDS_NEWDISKTITLE        "ò¿èGä√ìkó¬ãT"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_NEWDISKEXT          "d88"
     IDS_NEWDISKFILTER       "D88 îÎìkó¬ãT (*.d88;*.d98)|*.d88;*.88d;*.d98;*.98d|Anex86 öQìkó¬ãT (*.hdi)|*.hdi|T98 öQìkó¬ãT (*.thd)|*.thd|T98-Next öQìkó¬ãT (*.nhd)|*.nhd|Virtual98 öQìkó¬ãT (*.hdd)|*.hdd|"
     IDS_NEWDISKFILTER2      "D88 îÎìkó¬ãT (*.d88;*.d98)|*.d88;*.88d;*.d98;*.98d|Anex86 öQìkó¬ãT (*.hdi)|*.hdi|T98 öQìkó¬ãT (*.thd)|*.thd|T98-Next öQìkó¬ãT (*.nhd)|*.nhd|"
-    IDS_NEWDISKHDFILTER     "T98-Next harddisk image files (*.nhd)|*.nhd|VirtualPC harddisk image files (*.vhd)|*.vhd|Anex86 harddisk image files (*.hdi)|*.hdi|T98 harddisk image files (*.thd)|*.thd|Virtual98 harddisk image files (*.hdd)|*.hdd|RaSCSI harddisk image files (*.hdn)|*.hdn|"
-    IDS_NEWDISKHDFILTER2    "T98-Next harddisk image files (*.nhd)|*.nhd|VirtualPC harddisk image files (*.vhd)|*.vhd|Anex86 harddisk image files (*.hdi)|*.hdi|T98 harddisk image files (*.thd)|*.thd|"
-    IDS_NEWDISKFDFILTER     "D88 image files (*.d88;*.d98)|*.d88;*.88d;*.d98;*.98d|1.25MB raw image file (*.hdm)|*.hdm|1.44MB raw image file (*.hd4)|*.hd4|"
     IDS_S98TITLE            "ëçä‰ó®S98é≈ë∫"
     IDS_S98EXT              "s98"
     IDS_S98FILTER           "S98 é≈ë∫ (*.s98)|*.s98|"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_WAVETITLE           "ëçä‰ó®ïôôÚ"
     IDS_WAVEEXT             "wav"
     IDS_WAVEFILTER          "â¶òÃïôôÚ (*.wav)|*.wav|"
 END
 
-STRINGTABLE 
+STRINGTABLE DISCARDABLE 
 BEGIN
     IDS_SKINTITLE           "õıñ‡ó¬ãTô@ã¶"
     IDS_SKINEXT             "ini"

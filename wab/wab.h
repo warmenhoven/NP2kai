@@ -29,7 +29,7 @@ typedef struct {
 	int		readonly; // from np2oscfg
 } NP2WABCFG;
 
-typedef void NP2WAB_DrawFrame();
+typedef int NP2WAB_DrawFrame();
 typedef struct {
 	REG8 relay; // 画面出力リレー状態（bit0=内蔵ウィンドウアクセラレータ, bit1=RGB INスルー, それ以外のビットはReserved。bit0,1が00で98グラフィック
 	REG8 paletteChanged; // パレット要更新フラグ
@@ -50,25 +50,25 @@ typedef struct {
 typedef struct {
 	int multiwindow; // 別窓モード
 	int ready; // 0以外なら描いても良いよ
-#if defined(NP2_SDL) || defined(__LIBRETRO__)
-	unsigned int* pBuffer;
-#elif defined(NP2_X)
-	GtkWidget *pWABWnd;
-	GdkPixbuf *pPixbuf;
-#else
+#if defined(NP2_WIN)
 	HWND hWndMain; // メインウィンドウのハンドル
 	HWND hWndWAB; // ウィンドウアクセラレータ別窓のハンドル
 	HDC hDCWAB; // ウィンドウアクセラレータ別窓のHDC
 	HBITMAP hBmpBuf; // バッファビットマップ（常に等倍）
 	HDC     hDCBuf; // バッファのHDC
+#elif defined(NP2_X)
+	GtkWidget *pWABWnd;
+	GdkPixbuf *pPixbuf;
+#else
+	unsigned int* pBuffer;
 #endif
 	NP2WAB_DrawFrame *drawframe; // 画面描画関数。hDCBufにアクセラレータ画面データを転送する。
 } NP2WABWND;
 
-#if defined(NP2_SDL) || defined(NP2_X) || defined(__LIBRETRO__)
-void np2wab_init(void);
-#else
+#if defined(NP2_WIN)
 void np2wab_init(HINSTANCE hInstance, HWND g_hWndMain);
+#else
+void np2wab_init(void);
 #endif
 void np2wab_reset(const NP2CFG *pConfig);
 void np2wab_bind(void);
@@ -79,8 +79,10 @@ void np2wab_setRelayState(REG8 state);
 void np2wab_setScreenSize(int width, int height);
 void np2wab_setScreenSizeMT(int width, int height);
 
-void wabwin_readini();
-void wabwin_writeini();
+void wabwin_readini(void);
+void wabwin_writeini(void);
+
+void np2wab_forceupdate(void);
 
 extern NP2WAB		np2wab;
 extern NP2WABCFG	np2wabcfg;

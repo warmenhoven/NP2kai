@@ -2,11 +2,7 @@
 
 #include <np2_tickcount.h>
 #include <time.h>
-#if defined(NP2_WIN)
-#include <windows.h>
-#elif defined(NP2_SDL)
-#include <SDL.h>
-#elif defined(__LIBRETRO__)
+#if defined(__LIBRETRO__)
 #include <features/features_cpu.h>
 #endif
 
@@ -22,11 +18,11 @@ int64_t NP2_TickCount_GetCount(void) {
   LARGE_INTEGER count;
   QueryPerformanceCounter(&count);
   return count.QuadPart;
-#elif defined(NP2_SDL)
-#if SDL_MAJOR_VERSION == 1
-  return SDL_GetTicks();
-#else
+#elif defined(USE_SDL)
+#if USE_SDL_VERSION >= 2
   return SDL_GetPerformanceCounter();
+#else
+  return SDL_GetTicks();
 #endif
 #elif defined(__LIBRETRO__)
   lastcount = cpu_features_get_perf_counter();
@@ -44,11 +40,11 @@ int64_t NP2_TickCount_GetFrequency(void) {
   LARGE_INTEGER freq;
   QueryPerformanceFrequency(&freq);
   return freq.QuadPart;
-#elif defined(NP2_SDL)
-#if SDL_MAJOR_VERSION == 1
-  return 100000000;
-#else
+#elif defined(USE_SDL)
+#if USE_SDL_VERSION >= 2
   return SDL_GetPerformanceFrequency();
+#else
+  return 100000000;
 #endif
 #elif defined(__LIBRETRO__)
   int64_t nowcount = cpu_features_get_perf_counter();

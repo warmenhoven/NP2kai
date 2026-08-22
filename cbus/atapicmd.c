@@ -2,13 +2,25 @@
 
 #if 0
 #undef	TRACEOUT
+static void trace_fmt_ex(const char* fmt, ...)
+{
+	char stmp[2048];
+	va_list ap;
+	va_start(ap, fmt);
+	vsprintf(stmp, fmt, ap);
+	strcat(stmp, "¥n");
+	va_end(ap);
+	OutputDebugStringA(stmp);
+}
+#define	TRACEOUT(s)	trace_fmt_ex s
+#else
 #define	TRACEOUT(s)	(void)(s)
 #endif	/* 1 */
 
 // これ、scsicmdとどう統合するのよ？
 
 #if defined(SUPPORT_IDEIO)
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 #include	<process.h>
 #endif
 
@@ -28,7 +40,7 @@
 #define HEX2BCD(hex)	( (((hex/10)%10)<<4)|((hex)%10) )
 #define BCD2HEX(bcd)	( (((bcd>>4)&0xf)*10)+((bcd)&0xf) )
 
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 static int atapi_thread_initialized = 0;
 static HANDLE atapi_thread = NULL;
 static IDEDRV atapi_thread_drv = NULL;
@@ -207,9 +219,9 @@ void atapicmd_a0(IDEDRV drv) {
 			drv->asc = ATAPI_ASC_MEDIUM_NOT_PRESENT;
 			if(drv->sxsidrv==cdchange_drv && g_nevent.item[NEVENT_CDWAIT].clock > 0){
 				if(mediachangeflag==MEDIA_CHANGE_WAIT){
-					nevent_set(NEVENT_CDWAIT, 1, cdchange_timeoutproc, NEVENT_ABSOLUTE); // OS側がCDを催促しているようなので更に急いで交換
+					nevent_set(NEVENT_CDWAIT, 500, cdchange_timeoutproc, NEVENT_ABSOLUTE); // OS側がCDを催促しているようなので更に急いで交換
 				}else if(mediachangeflag==0){
-					//nevent_setbyms(NEVENT_CDWAIT, 1000, cdchange_timeoutproc, NEVENT_ABSOLUTE); // OS側がCDが無いと認識したようなので急いで交換
+					nevent_setbyms(NEVENT_CDWAIT, 1000, cdchange_timeoutproc, NEVENT_ABSOLUTE); // OS側がCDが無いと認識したようなので急いで交換
 				}
 			}
 			if(mediachangeflag < MEDIA_CHANGE_WAIT) mediachangeflag++;
@@ -236,24 +248,25 @@ void atapicmd_a0(IDEDRV drv) {
 				//}
 			}else{
 				// for WinNT,2000 setup
-				if(mediachangeflag >= MEDIA_CHANGE_WAIT){
+				//if(mediachangeflag >= MEDIA_CHANGE_WAIT){
 					drv->media &= ~IDEIO_MEDIA_CHANGED;
-					drv->asc = 0x0204; // LOGICAL DRIVE NOT READY - INITIALIZING COMMAND REQUIRED
+					drv->asc = ATAPI_ASC_MEDIUM_NOT_PRESENT;
+					//drv->asc = 0x0204; // LOGICAL DRIVE NOT READY - INITIALIZING COMMAND REQUIRED
 				//}else if(mediachangeflag >= 1){
 				//	drv->asc = 0x0204; // LOGICAL DRIVE NOT READY - INITIALIZING COMMAND REQUIRED
 				//	mediachangeflag++;
-				}else{
-					drv->asc = ATAPI_ASC_MEDIUM_NOT_PRESENT;
-//#if defined(CPUCORE_IA32)
-//					// Workaround for WinNT
-//					if (CPU_STAT_PM && !CPU_STAT_VM86) {
-						//mediachangeflag++;
-//					} else
-//#endif
-//					{
-						mediachangeflag = MEDIA_CHANGE_WAIT;
-					//}
-				}
+//				}else{
+//					drv->asc = ATAPI_ASC_MEDIUM_NOT_PRESENT;
+////#if defined(CPUCORE_IA32)
+////					// Workaround for WinNT
+////					if (CPU_STAT_PM && !CPU_STAT_VM86) {
+//						//mediachangeflag++;
+////					} else
+////#endif
+////					{
+//						mediachangeflag = MEDIA_CHANGE_WAIT;
+//					//}
+//				}
 			}
 			senderror(drv);
 			break;
@@ -386,7 +399,7 @@ void atapicmd_a0(IDEDRV drv) {
 // 0x1b: START/STOP UNIT
 #ifdef SUPPORT_PHYSICAL_CDDRV
 void atapi_cmd_traycmd_eject_threadfunc(void* vdParam) {
-#if defined(_WINDOWS)
+#if defined(NP2_WIN)
 	HANDLE handle;
 	DWORD dwRet = 0;
 	wchar_t	wpath[MAX_PATH];
@@ -405,7 +418,7 @@ void atapi_cmd_traycmd_eject_threadfunc(void* vdParam) {
 #endif
 }
 void atapi_cmd_traycmd_close_threadfunc(void* vdParam) {
-#if defined(_WINDOWS)
+#if defined(NP2_WIN)
 	HANDLE handle;
 	DWORD dwRet = 0;
 	wchar_t	wpath[MAX_PATH];
@@ -448,7 +461,7 @@ static void atapi_cmd_start_stop_unit(IDEDRV drv) {
 	case 2: // Eject the Disc if possible
 #ifdef SUPPORT_PHYSICAL_CDDRV
 		if(np2cfg.allowcdtraycmd && _tcsnicmp(np2cfg.idecd[sxsi->drv], OEMTEXT("\\\\.\\"), 4)==0){
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 			_beginthread(atapi_cmd_traycmd_eject_threadfunc, 0, (void*)sxsi->drv);
 #else
 			// TODO: Windows以外のコードを書く
@@ -464,7 +477,7 @@ static void atapi_cmd_start_stop_unit(IDEDRV drv) {
 	case 3: // Load the Disc (Close Tray)
 #ifdef SUPPORT_PHYSICAL_CDDRV
 		if(np2cfg.allowcdtraycmd && _tcsnicmp(np2cfg.idecd[sxsi->drv], OEMTEXT("\\\\.\\"), 4)==0){
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 			_beginthread(atapi_cmd_traycmd_close_threadfunc, 0, (void*)sxsi->drv);
 #else
 			// TODO: Windows以外のコードを書く
@@ -533,7 +546,7 @@ static void atapi_cmd_read_capacity(IDEDRV drv) {
 }
 
 // 0x28: READ(10)
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 static int atapi_dataread_error = -1;
 void atapi_dataread_threadfunc_part(IDEDRV drv) {
 
@@ -763,7 +776,7 @@ void atapi_dataread_end(IDEDRV drv) {
 		ideio.bank[0] = ideio.bank[1] | 0x80;			// ????
 		pic_setirq(IDE_IRQ);
 	}
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN) && !defined(__LIBRETRO__)
 	atapi_dataread_error = -1;
 #endif
 }
@@ -778,7 +791,7 @@ void atapi_dataread_errorend(IDEDRV drv) {
 	sxsi->cdflag_ecc = (sxsi->cdflag_ecc & ~CD_ECC_BITMASK) | CD_ECC_NOERROR;
 	senderror(drv);
 	TRACEOUT(("atapicmd: read error at sector %d", drv->sector));
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN) && !defined(__LIBRETRO__)
 	atapi_dataread_error = -1;
 #endif
 }
@@ -808,7 +821,7 @@ static void atapi_cmd_read_cd(IDEDRV drv, UINT32 lba, UINT32 nsec) {
 
 	UINT16 isCDDA = 1;
 	
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN) && !defined(__LIBRETRO__)
 	atapi_thread_drv = drv;
 #endif
 	sxsi = sxsi_getptr(drv->sxsidrv);
@@ -1564,7 +1577,7 @@ static void atapi_cmd_mechanismstatus(IDEDRV drv) {
 }
 
 void atapi_initialize(void) {
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 	UINT32 dwID = 0;
 	//if(!pic_cs_initialized){
 	//	memset(&pic_cs, 0, sizeof(pic_cs));
@@ -1583,7 +1596,7 @@ void atapi_initialize(void) {
 }
 
 void atapi_deinitialize(void) {
-#if defined(_WINDOWS) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 	if(atapi_thread_initialized){
 		atapi_thread_initialized = 0;
 		SetEvent(atapi_thread_event_request);
