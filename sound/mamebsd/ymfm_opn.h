@@ -763,7 +763,10 @@ public:
 
 protected:
 	// simulate the DAC discontinuity
-	YMFM_CONSTEXPR int32_t dac_discontinuity(int32_t value) const { return (value < 0) ? (value - 3) : (value + 4); }
+	// (not constexpr: ym2612 is not a literal type, and DR1684 - which allows
+	// a constexpr member function in such a class - is not implemented by
+	// devkitPPC's g++.  Only ever called at run time.)
+	int32_t dac_discontinuity(int32_t value) const { return (value < 0) ? (value - 3) : (value + 4); }
 
 	// internal state
 	uint16_t m_address;              // address register
