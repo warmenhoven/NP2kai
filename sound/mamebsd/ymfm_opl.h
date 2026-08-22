@@ -359,14 +359,14 @@ public:
 	void save_restore(ymfm_saved_state &state);
 
 	// map channel number to register offset
-	static YMFM_CONSTEXPR uint32_t channel_offset(uint32_t chnum)
+	static constexpr uint32_t channel_offset(uint32_t chnum)
 	{
 		assert(chnum < CHANNELS);
 		return chnum;
 	}
 
 	// map operator number to register offset
-	static YMFM_CONSTEXPR uint32_t operator_offset(uint32_t opnum)
+	static constexpr uint32_t operator_offset(uint32_t opnum)
 	{
 		assert(opnum < OPERATORS);
 		return opnum;
