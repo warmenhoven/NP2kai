@@ -57,10 +57,10 @@ static void sys_cmd(MENUID id) {
 	update = 0;
 	switch(id) {
 		case MID_RESET:
-#if defined(__LIBRETRO__)
-			reset_lrkey();
-#elif defined(NP2_SDL)
+#if defined(NP2_SDL)
 			sdlkbd_reset();
+#else
+			reset_lrkey();
 #endif
 			pccore_cfgupdate();
 			if(nevent_iswork(NEVENT_CDWAIT)){
@@ -295,6 +295,17 @@ static void sys_cmd(MENUID id) {
 		case MID_SCSI3EJECT:
 			diskdrv_setsxsi(0x23, NULL);
 			break;
+#endif
+#if defined(NP2_SDL)
+#if USE_SDL >= 2
+		case MID_FULLSCREEN:
+			changescreen(scrnmode | SCRNMODE_FULLSCREEN);
+			break;
+
+		case MID_WINDOW:
+			changescreen(scrnmode & ~SCRNMODE_FULLSCREEN);
+			break;
+#endif
 #endif
 		case MID_ROLNORMAL:
 			changescreen((scrnmode & ~SCRNMODE_ROTATEMASK) | 0);
@@ -1010,6 +1021,8 @@ BRESULT sysmenu_menuopen(UINT menutype, int x, int y) {
 #if defined(SUPPORT_ASYNC_CPU)
 	menusys_setcheck(MID_ASYNCCPU, (np2cfg.asynccpu & 1));
 #endif
+	menusys_setcheck(MID_FULLSCREEN, ((scrnmode & SCRNMODE_FULLSCREEN) == 1));
+	menusys_setcheck(MID_WINDOW, ((scrnmode & SCRNMODE_FULLSCREEN) == 0));
 	menusys_setcheck(MID_ROLNORMAL, ((scrnmode & SCRNMODE_ROTATEMASK) == 0));
 	menusys_setcheck(MID_ROLLEFT,   ((scrnmode & SCRNMODE_ROTATEMASK) == SCRNMODE_ROTATELEFT));
 	menusys_setcheck(MID_ROLRIGHT,  ((scrnmode & SCRNMODE_ROTATEMASK) == SCRNMODE_ROTATERIGHT));

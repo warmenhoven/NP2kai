@@ -11,7 +11,6 @@
 #include "compiler_base.h"
 
 #include	<pthread.h>
-#include	<SDL.h>
 
 #define	msgbox(title, msg)
 

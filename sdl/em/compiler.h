@@ -13,8 +13,6 @@
 #include	<unistd.h>
 #include	<assert.h>
 
-#include	<SDL.h>
-
 #ifdef EMSCRIPTEN
 #include <emscripten.h>
 #endif

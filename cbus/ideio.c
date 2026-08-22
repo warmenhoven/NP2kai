@@ -211,7 +211,9 @@ static void setintr(IDEDRV drv) {
 		TRACEOUT(("ideio: setintr()"));
 		ideio.bank[0] = ideio.bank[1] | 0x80;			// ????
 		pic_setirq(IDE_IRQ);
-		//mem[MEMB_DISK_INTH] |= 0x01; 
+		if (ideio.bios != IDETC_BIOS) {
+			mem[MEMB_DISK_INTH] |= 0x01; // エミュレーションIDE BIOSなら代理で立てる
+		}
 	}
 }
 
@@ -246,7 +248,9 @@ void ideioint(NEVENTITEM item) {
 	if(!(dev->drv[0].ctrl & IDECTRL_NIEN) || !(dev->drv[1].ctrl & IDECTRL_NIEN)){
 		TRACEOUT(("ideio: run setdintr()"));
 		pic_setirq(IDE_IRQ);
-		//mem[MEMB_DISK_INTH] |= 0x01; 
+		if (ideio.bios != IDETC_BIOS) {
+			mem[MEMB_DISK_INTH] |= 0x01; // エミュレーションIDE BIOSなら代理で立てる
+		}
 	}
    (void)item;
 }
@@ -281,7 +285,9 @@ void ideioint2(NEVENTITEM item) {
 	if(!(dev->drv[0].ctrl & IDECTRL_NIEN) || !(dev->drv[1].ctrl & IDECTRL_NIEN)){
 		TRACEOUT(("ideio: run setdintr()"));
 		pic_setirq(IDE_IRQ);
-		//mem[MEMB_DISK_INTH] |= 0x01; 
+		if (ideio.bios != IDETC_BIOS) {
+			mem[MEMB_DISK_INTH] |= 0x01; // エミュレーションIDE BIOSなら代理で立てる
+		}
 	}
    (void)item;
 }
@@ -298,7 +304,14 @@ static void setdintr(IDEDRV drv, UINT8 errno, UINT8 status, UINT32 delay) {
 		//nevent_set(NEVENT_SASIIO, (pccore.realclock / 1000 / 1000) * delay, ideioint, NEVENT_ABSOLUTE);
 
 		// 指定した時間遅延（クロック数）
-		nevent_set(NEVENT_SASIIO, delay, ideioint, NEVENT_ABSOLUTE);
+		if (delay == 0)
+		{
+			ideioint(&g_nevent.item[NEVENT_SASIIO]);
+		}
+		else
+		{
+			nevent_set(NEVENT_SASIIO, delay, ideioint, NEVENT_ABSOLUTE);
+		}
 	}
 }
 static void setdintr2(IDEDRV drv, UINT8 errno, UINT8 status, UINT32 delay) {
@@ -312,7 +325,14 @@ static void setdintr2(IDEDRV drv, UINT8 errno, UINT8 status, UINT32 delay) {
 		//nevent_set(NEVENT_SASIIO, (pccore.realclock / 1000 / 1000) * delay, ideioint, NEVENT_ABSOLUTE);
 
 		// 指定した時間遅延（クロック数）
-		nevent_set(NEVENT_SASIIO, delay, ideioint2, NEVENT_ABSOLUTE);
+		if (delay == 0)
+		{
+			ideioint2(&g_nevent.item[NEVENT_SASIIO]);
+		}
+		else
+		{
+			nevent_set(NEVENT_SASIIO, delay, ideioint2, NEVENT_ABSOLUTE);
+		}
 	}
 }
 
@@ -479,6 +499,15 @@ static void readsec(IDEDRV drv) {
 	sec = getcursec(drv);
 	//TRACEOUT(("readsec->drv %d sec %x cnt %d thr %d",
 	//							drv->sxsidrv, sec, drv->mulcnt, drv->multhr));
+	if (sxsi_read(drv->sxsidrv, sec, drv->buf, 512)) {
+		TRACEOUT(("read error!"));
+		goto read_err;
+	}
+	drv->bufdir = IDEDIR_IN;
+	drv->buftc = IDETC_TRANSFEREND;
+	drv->bufpos = 0;
+	drv->bufsize = 512;
+	// READはI/Oポートで読み取るデータが準備できたら割り込み
 	if (1) {
 		drv->status = IDESTAT_DRDY | IDESTAT_DSC | IDESTAT_DRQ;
 		drv->error = 0;
@@ -563,7 +592,7 @@ static void IOOUTCALL ideio_o430(UINT port, REG8 dat) {
 
 	TRACEOUT(("ideio setbank%d %.2x [%.4x:%.8x]",
 									(port >> 1) & 1, dat, CPU_CS, CPU_EIP));
-#if !defined(NP2_X) && !defined(NP2_SDL) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 	atapi_dataread_asyncwait(INFINITE);
 #endif
 
@@ -740,7 +769,7 @@ static void IOOUTCALL ideio_o64c(UINT port, REG8 dat) {
 	IDEDEV	dev;
 	UINT	drvnum;
 	
-#if !defined(NP2_X) && !defined(NP2_SDL) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 	atapi_dataread_asyncwait(INFINITE);
 #endif
 
@@ -783,7 +812,7 @@ static void IOOUTCALL ideio_o64e(UINT port, REG8 dat) {
 	IDEDEV	dev;
 	int		i;
 	
-#if !defined(NP2_X) && !defined(NP2_SDL) && !defined(__LIBRETRO__)
+#if defined(NP2_WIN)
 	atapi_dataread_asyncwait(INFINITE);
 #endif
 
@@ -1410,7 +1439,9 @@ static REG8 IOINPCALL ideio_i64e(UINT port) {
 		if (!(drv->ctrl & IDECTRL_NIEN)) {
 			TRACEOUT(("ideio: resetirq"));
 			pic_resetirq(IDE_IRQ);
-			//mem[MEMB_DISK_INTH] &= ~0x01; 
+			if (ideio.bios != IDETC_BIOS) {
+				mem[MEMB_DISK_INTH] &= ~0x01; // エミュレーションIDE BIOSなら代理で下ろす
+			}
 		}
 		return(drv->status);
 	}
